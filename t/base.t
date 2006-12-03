@@ -51,7 +51,7 @@ BEGIN {
     }
 }
 
-BEGIN { plan tests => 4 }
+BEGIN { plan tests => 8 }
 
 # just check that all modules can be compiled
 ok(eval {require Geo::Constants; 1}, 1, $@);
@@ -59,7 +59,11 @@ ok(eval {require Geo::Constants; 1}, 1, $@);
 my $o = Geo::Constants->new();
 ok(ref $o, "Geo::Constants");
 
-ok ($o->pi, 4*atan2(1,1));
+ok ($o->PI, 4*atan2(1,1));
+ok ($o->DEG, 180/(4*atan2(1,1)));
+ok ($o->RAD, 4*atan2(1,1)/180);
 
-use Geo::Constants qw{pi};
-ok (pi, 4*atan2(1,1));
+use Geo::Constants qw{PI DEG RAD};
+ok (PI, 4*atan2(1,1));
+ok (DEG, 180/(4*atan2(1,1)));
+ok (RAD, 4*atan2(1,1)/180);
