@@ -64,6 +64,6 @@ ok ($o->DEG, 180/(4*atan2(1,1)));
 ok ($o->RAD, 4*atan2(1,1)/180);
 
 use Geo::Constants qw{PI DEG RAD};
-ok (PI, 4*atan2(1,1));
-ok (DEG, 180/(4*atan2(1,1)));
-ok (RAD, 4*atan2(1,1)/180);
+ok (PI(), 4*atan2(1,1));        #Barewords on some machines or perl versions
+ok (DEG(), 180/(4*atan2(1,1))); #fail.  So, I do not use them.  You may use
+ok (RAD(), 4*atan2(1,1)/180);   #them in your scripts but they may not port.

@@ -8,11 +8,15 @@ Geo::Constants - Perl Standard Geo:: package for constants
 =head1 SYNOPSIS
 
   use Geo::Constants qw{PI DEG RAD}; #import into namespace
-  print "PI: ", PI, "\n";
+  print "PI:  ", PI(), "\n";
+  print "d/r: ", DEG(), "\n";
+  print "r/d: ", RAD(), "\n";
 
   use Geo::Constants;                #Perl OO
   my $obj = Geo::Constants->new();
-  print "PI: ", $obj->PI, "\n";
+  print "PI:  ", $obj->PI, "\n";
+  print "d/r: ", $obj->DEG, "\n";
+  print "r/d: ", $obj->RAD, "\n";
 
 =head1 DESCRIPTION
 
@@ -23,7 +27,7 @@ use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
 @ISA = qw(Exporter);
 @EXPORT_OK = (qw{PI DEG RAD});
-$VERSION = sprintf("%d.%02d", q{Revision: 0.03} =~ /(\d+)\.(\d+)/);
+$VERSION = sprintf("%d.%02d", q{Revision: 0.04} =~ /(\d+)\.(\d+)/);
 
 =head1 CONSTRUCTOR
 
@@ -50,16 +54,16 @@ sub new {
 
 sub initialize {
   my $self = shift();
-  my $param = shift();
 }
 
 =head2 PI
 
   my $pi = $obj->PI;
 
-=cut
+  use Geo::Constants qw{PI};
+  my $pi = PI();
 
-#use constant PI => 4 * atan2(1,1);
+=cut
 
 sub PI {
   return 4 * atan2(1,1); #Perl should complile this as a constant
@@ -67,27 +71,29 @@ sub PI {
 
 =head2 DEG
 
-  my $degress_per_radian = $obj->DEG;
+  my $degrees_per_radian = $obj->DEG;
+
+  use Geo::Constants qw{DEG};
+  my $degrees_per_radian = DEG();
 
 =cut
 
-#use constant DEG => 180 / PI;
 sub DEG {
-  return(180 / &PI); #Degrees per radian
+  return 180 / PI(); #Degrees per radian
 }
 
 =head2 RAD
 
   my $radians_per_degree = $obj->RAD;
 
+  use Geo::Constants qw{DEG};
+  my $radians_per_degree = RAD();
+
 =cut
 
-#use constant RAD => PI / 180;
 sub RAD {
-  return(&PI / 180); #Radians per degree
+  return PI() / 180; #Radians per degree
 }
-
-use subs @EXPORT_OK;
 
 1;
 
