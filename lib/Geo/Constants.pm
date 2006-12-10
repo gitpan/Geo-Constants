@@ -3,7 +3,7 @@ package Geo::Constants;
 
 =head1 NAME
 
-Geo::Constants - Perl Standard Geo:: package for constants
+Geo::Constants - Package for standard Geo:: constants.
 
 =head1 SYNOPSIS
 
@@ -27,7 +27,7 @@ use strict;
 use vars qw($VERSION @ISA @EXPORT_OK);
 @ISA = qw(Exporter);
 @EXPORT_OK = (qw{PI DEG RAD});
-$VERSION = sprintf("%d.%02d", q{Revision: 0.04} =~ /(\d+)\.(\d+)/);
+$VERSION = sprintf("%d.%02d", q{Revision: 0.05} =~ /(\d+)\.(\d+)/);
 
 =head1 CONSTRUCTOR
 
@@ -104,6 +104,8 @@ __END__
 Add more constants
 
 =head1 BUGS
+
+Please send to the geo-perl email list.
 
 =head1 LIMITS
 
