@@ -6,7 +6,7 @@
 # Author: Michael R. Davis
 #
 
-=head1 Test Examples
+=head1 NAME
 
 base.t - Good examples concerning how to use this module
 
@@ -51,7 +51,7 @@ BEGIN {
     }
 }
 
-BEGIN { plan tests => 8 }
+BEGIN { plan tests => 10 }
 
 # just check that all modules can be compiled
 ok(eval {require Geo::Constants; 1}, 1, $@);
@@ -62,8 +62,10 @@ ok(ref $o, "Geo::Constants");
 ok ($o->PI, 4*atan2(1,1));
 ok ($o->DEG, 180/(4*atan2(1,1)));
 ok ($o->RAD, 4*atan2(1,1)/180);
+ok ($o->KNOTS, 1852/3600);
 
-use Geo::Constants qw{PI DEG RAD};
+use Geo::Constants qw{PI DEG RAD KNOTS};
 ok (PI(), 4*atan2(1,1));        #Barewords on some machines or perl versions
 ok (DEG(), 180/(4*atan2(1,1))); #fail.  So, I do not use them.  You may use
 ok (RAD(), 4*atan2(1,1)/180);   #them in your scripts but they may not port.
+ok (KNOTS(), 1852/3600);

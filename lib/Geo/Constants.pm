@@ -26,8 +26,8 @@ use strict;
 #use vars qw($VERSION $PACKAGE @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use vars qw($VERSION @ISA @EXPORT_OK);
 @ISA = qw(Exporter);
-@EXPORT_OK = (qw{PI DEG RAD});
-$VERSION = sprintf("%d.%02d", q{Revision: 0.05} =~ /(\d+)\.(\d+)/);
+@EXPORT_OK = (qw{PI DEG RAD KNOTS});
+$VERSION = sprintf("%d.%02d", q{Revision: 0.06} =~ /(\d+)\.(\d+)/);
 
 =head1 CONSTRUCTOR
 
@@ -93,6 +93,18 @@ sub DEG {
 
 sub RAD {
   return PI() / 180; #Radians per degree
+}
+
+=head2 KNOTS
+
+1 nautical mile per hour = (1852/3600) m/s - United States Department of Commerce, National Institute of Standards and Technology, NIST Special Publication 330, 2001 Edition
+
+Returns 1852/3600
+
+=cut
+
+sub KNOTS {
+  return 1852/3600; #1 nautical mile per hour = (1852/3600) m/s
 }
 
 1;
